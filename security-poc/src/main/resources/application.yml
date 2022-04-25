@@ -1,0 +1,25 @@
+
+server:
+  port: 8090
+spring:
+  h2:
+    console.path: /h2-console
+    console.enabled: true
+  datasource:
+    url: jdbc:h2:mem:mydb
+    username: sa
+    password: password
+    driverClassName: org.h2.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://auth-server:9000/oauth2/jwks
+          issuer-uri: http://auth-server:9000
+
+logging:
+  level:
+    org.springframework.security: TRACE
+    org.springframework.security.access: INFO
